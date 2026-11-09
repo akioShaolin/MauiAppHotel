@@ -1,84 +1,401 @@
-Essa série de videoulas faz parte do meu curso grátis Criando Aplicativos com .NET MAUI. Em especial, 
+# AppHotel — Agenda 14
 
-Repositório do projeto AppHotel. O AppHotel faz um panorama sobre elementos de interface gráfica .NET MAUI como Stepper, DatePicker, Picker e uma introdução com conceito de BidingContext
+Projeto desenvolvido para a **Agenda 14 de Desenvolvimento de Sistemas II**, utilizando **C#**, **XAML** e **.NET MAUI**.
 
-## Playlist com todas as videoaulas de construção desse projeto
-- https://www.youtube.com/watch?v=ExstAh2vqjk&list=PLHVpcBDJr5dkC1RVRMbVsgpZgtfOxMtf-
+O projeto é baseado no AppHotel disponibilizado como material de estudo do curso e foi adaptado e personalizado durante a atividade.
 
-### AULA 5 - CRIANDO APLICATIVOS COM .NET MAUI - APPHOTEL - DATEPICKER, STEPPER E PICKER
--00:00 Introdução
-- 01:53 Criação do Projeto
-- 04:13 Compilando Projeto em Branco
-- 05:30 Ajustando o Tamanho da Tela
-- 08:48 Enviado o Projeto para Github
-- 10:08 Organizando a Estrutura do Projeto
-- 11:40 Adicionando mais Telas ao App
-- 15:15 Adicionando Fontes Personalizadas
-- 22:10 Modificando a Tela Inicial do App
-- 23:52 Construindo a Tela Inicial do App
-- 24:21 Escondendo a Barra de Navegação 
-- 25:10 Escolhendo Cores a partir de Estilos
-- 25:36 Explorando os arquivos de Estilos
-- 32:30 Definindo Componente ```Stepper```
-- 34:37 ```BindingContext``` no .NET MAUI
-- 39:00 Definindo Elemento ```Picker```
-- 42:56 Definindo Elemento ```DatePicker```
+Nesta versão foram realizadas alterações de compatibilidade, interface gráfica e interação com os componentes da aplicação.
 
-### AULA 6 - CRIANDO APLICATIVOS COM .NET MAUI - APPHOTEL - BINDINGCONTEXT
-- 00:00 Enviando Alterações para Git
-- 01:20 Introdução
-- 01:51 Criando o método para navegar de tela
-- 02:44 Erro do InitializeComponent
-- 03:54 Navegando entre telas
-- 06:10 Layout da apresentação da hospedagem
-- 07:30 Definido a cor de fundo da página
-- 08:16 Construindo a Interface Gráfica
-- 13:28 Combinando ```Frame``` e ```Grid```
-- 17:00 Definindo o Botão Voltar
-- 18:39 Testando a navegação entre telas
-- 19:30 Definindo dos Models do App
-- 23:38 Estabelecendo a lista de Quartos
-- 24:40 Atalhos para using automático
-- 25:15 Definindo a lista de quartos
-- 27:50 Obtendo a lista de quartos
-- 30:50 Mostrando a lista de quartos no ```Picker```
-- 32:27 Validando as datas no ```DatePicker```
+---
 
+## Resultado final
 
-### AULA 7 - CRIANDO APLICATIVOS COM .NET MAUI - APPHOTEL - EXIBINDO DADOS DE UMA MODEL NO XAML
-- 00:00 Introdução
-- 00:47 Resumo da Interface gráfica com Model
-- 02:45 Definindo o Model da Hospedagem
-- 05:15 Propriedades somente leitura
-- 06:50 Propriedade para calcular o valor da Hospedagem
-- 11:17 Implementando o botão Avançar
-- 15:43 Trocando os dados de tela com ```BindingContext```
-- 17:12 Mostrando dados passados por ```BindingContext```
-- 19:29 Visualizando falhas de associação no XAML
-- 20:55 Mostrando todos os dados do ```BindingContext```
-- 23:07 Formatando datas e formatos monetários no XAML
-- 28:17 Definição das cores do aplicativo
-- 30:26 Entendendo a formatação de estilos no XAML
-- 32:25 Ajustando posicionamentos Horizontais
-- 36:36 Definindo espaçamentos com ```Spacing``` no XAML
-- 41:54 Revisando as formatações do App
-- 43:30 Conclusão
+### Tela de reserva
 
-### AULA 8 - CRIANDO APLICATIVOS COM .NET MAUI - EXECUTANDO O APP NO ANDROID - EMULADOR E CELULAR FÍSICO
-- 00:00 Introdução
-- 02:17 Abrindo o Projeto Maui através do GitHub
-- 03:43 Executando o App no Windows 11
-- 04:46 Orientações quanto ao Emulador Android
-- 07:06 Gerenciador de Dispositivos Android
-- 09:02 Verificando instalação do Hyper-v
-- 11:20 Executando no Dispositivo Físico
-- 11:41 Colocando o celular físico no Modo Desenvolvedor
-- 15:17 Confirmação de Instalação do App
-- 17:49 Testando emulador com Hyper-v
-- 19:02 Executando o App no Android
-- 21:25 Comprando a versão Windows e Android
+![Tela de reserva](screenshots/9.sou-rico-so-nesse-app.png)
 
-## CURTIU MEU TRABALHO?
-Você pode me ajudar com um pix para tiago@tiago.blog.br 🍻
+### Resumo da hospedagem
 
-Atualizado em 2025
+![Resumo da reserva](screenshots/10.ate-que-nao-ficou-tao-caro.png)
+
+---
+
+## Objetivo
+
+O AppHotel permite realizar uma simulação do valor de uma hospedagem informando:
+
+- quantidade de adultos;
+- quantidade de crianças;
+- tipo de suíte;
+- data de check-in;
+- data de check-out.
+
+Após o preenchimento, o aplicativo apresenta um resumo contendo os dados da reserva, a quantidade de diárias e o valor total calculado.
+
+---
+
+## Tecnologias utilizadas
+
+- C#
+- XAML
+- .NET MAUI
+- .NET 10
+- Visual Studio
+- Git
+- GitHub
+
+A versão atual do projeto está configurada para execução no Windows através do target:
+
+```xml
+<TargetFramework>net10.0-windows10.0.19041.0</TargetFramework>
+```
+
+---
+
+## Alterações realizadas
+
+### Migração para .NET 10
+
+O projeto-base utilizava **.NET 8** e possuía targets para diferentes plataformas.
+
+Para executar o projeto no ambiente utilizado durante a atividade, ele foi atualizado para **.NET 10 para Windows**.
+
+Também foram removidas dependências antigas que não eram necessárias para a execução atual.
+
+---
+
+### Compatibilidade com o DatePicker do .NET 10
+
+No .NET 10, a propriedade `Date` do `DatePicker` trabalha com `DateTime?`.
+
+Por esse motivo, alguns trechos do código original precisaram ser adaptados.
+
+Exemplo:
+
+```csharp
+dtpck_checkout.MinimumDate =
+    dtpck_checkin.Date.Value.AddDays(1);
+```
+
+Também foram adaptadas as datas utilizadas para criar o objeto de hospedagem:
+
+```csharp
+DataCheckIn = dtpck_checkin.Date.Value,
+DataCheckOut = dtpck_checkout.Date.Value,
+```
+
+---
+
+## Nova interface
+
+A interface gráfica foi reformulada mantendo as funcionalidades originais do projeto.
+
+Entre as principais mudanças estão:
+
+- nova paleta de cores;
+- fundo em degradê;
+- utilização de cards com cantos arredondados;
+- reorganização dos elementos;
+- nova hierarquia visual;
+- substituição visual da fonte Kalam por Open Sans;
+- novos estilos globais;
+- melhoria da exibição do `Picker`;
+- melhoria da exibição dos `DatePicker`;
+- nova tela de resumo da hospedagem;
+- destaque visual para o valor total.
+
+As cores e estilos principais foram centralizados no arquivo `App.xaml`, facilitando alterações futuras no design.
+
+---
+
+## Controle de hóspedes
+
+O projeto original utilizava o componente `Stepper`.
+
+Durante a personalização, o controle foi substituído por botões próprios de incremento e decremento.
+
+Exemplo:
+
+```text
+Adultos      2    -   +
+Crianças     2    -   +
+```
+
+Essa alteração permitiu maior controle sobre a aparência dos componentes.
+
+Foram criados estados visuais diferentes para:
+
+- estado normal;
+- passagem do mouse (`PointerOver`);
+- botão pressionado (`Pressed`);
+- botão desabilitado.
+
+A quantidade é limitada entre **0 e 10 pessoas** para cada categoria.
+
+---
+
+## Seleção da suíte
+
+As opções de hospedagem são representadas pela classe `Quarto`.
+
+```csharp
+public class Quarto
+{
+    public string Descricao { get; set; }
+    public double ValorDiariaAdulto { get; set; }
+    public double ValorDiariaCrianca { get; set; }
+}
+```
+
+O aplicativo possui atualmente as seguintes opções:
+
+- Suíte Super Luxo;
+- Suíte Luxo;
+- Suíte Single;
+- Suíte Crise.
+
+Os quartos são armazenados em uma:
+
+```csharp
+List<Quarto>
+```
+
+e apresentados ao usuário através de um `Picker`.
+
+---
+
+## Model de hospedagem
+
+A classe `Hospedagem` reúne as informações utilizadas para calcular a reserva.
+
+Entre suas propriedades estão:
+
+```csharp
+QuartoSelecionado
+QntAdultos
+QntCriancas
+DataCheckIn
+DataCheckOut
+```
+
+A quantidade de dias é calculada pela propriedade:
+
+```csharp
+public int Estadia
+{
+    get => DataCheckOut.Subtract(DataCheckIn).Days;
+}
+```
+
+O valor total é calculado considerando:
+
+```text
+(valor dos adultos + valor das crianças)
+                  ×
+        quantidade de diárias
+```
+
+Essa lógica está encapsulada na propriedade `ValorTotal`.
+
+---
+
+## Validação das datas
+
+O projeto utiliza componentes `DatePicker` para selecionar o período da hospedagem.
+
+O check-out deve ocorrer depois do check-in.
+
+Quando a data de entrada é alterada, os limites permitidos para a data de saída também são atualizados.
+
+Exemplo:
+
+```csharp
+dtpck_checkout.MinimumDate =
+    data_selecionada_checkin.AddDays(1);
+
+dtpck_checkout.MaximumDate =
+    data_selecionada_checkin.AddMonths(6);
+```
+
+---
+
+## Navegação e BindingContext
+
+Após clicar em **Calcular diária**, é criado um objeto `Hospedagem`.
+
+```csharp
+Hospedagem h = new Hospedagem
+{
+    QuartoSelecionado = (Quarto)pck_quarto.SelectedItem,
+    QntAdultos = quantidadeAdultos,
+    QntCriancas = quantidadeCriancas,
+    DataCheckIn = dtpck_checkin.Date.Value,
+    DataCheckOut = dtpck_checkout.Date.Value
+};
+```
+
+O objeto é enviado para a tela de resumo utilizando `BindingContext`:
+
+```csharp
+await Navigation.PushAsync(
+    new HospedagemContratada()
+    {
+        BindingContext = h
+    }
+);
+```
+
+A segunda tela utiliza os bindings do XAML para exibir automaticamente as informações da hospedagem.
+
+---
+
+## Estrutura principal
+
+```text
+MauiAppHotel/
+│
+├── Models/
+│   ├── Hospedagem.cs
+│   └── Quarto.cs
+│
+├── Views/
+│   ├── ContratacaoHospedagem.xaml
+│   ├── ContratacaoHospedagem.xaml.cs
+│   ├── HospedagemContratada.xaml
+│   └── HospedagemContratada.xaml.cs
+│
+├── Resources/
+├── App.xaml
+├── App.xaml.cs
+├── MauiProgram.cs
+└── MauiAppHotel.csproj
+
+screenshots/
+```
+
+---
+
+## Evolução durante a atividade
+
+Além das telas finais, foram registradas várias etapas do desenvolvimento.
+
+### Adaptação para .NET 10
+
+![Migração para .NET 10](screenshots/1.alterando-para-versao-10.0.png)
+
+### Erros encontrados após a migração
+
+![Erros de compatibilidade](screenshots/2.erros-em-funcoes-adapatar-para-versao-10.png)
+
+### Correção relacionada às datas
+
+![Correção DateTime](screenshots/3.corrigindo-erros-relacionados-ao-systemdate.png)
+
+### Primeira execução do projeto original
+
+![Primeira execução](screenshots/4.primeira-execucao-bem-sucedida.png)
+
+### Início da revisão visual
+
+![Revisão visual](screenshots/5.revisao-visual-do-app.png)
+
+### Ajustes de interface
+
+![Alterações visuais](screenshots/6.alteracoes-no-codigo-para-melhor-visual.png)
+
+### Ajuste dos controles
+
+![Hover](screenshots/7.ajuste-necessario-no-hover.png)
+
+### Ajuste do Picker
+
+![Picker](screenshots/8.correcao-de-tamanho-necessaria.png)
+
+---
+
+## Como executar
+
+### Requisitos
+
+- Windows 10 ou Windows 11;
+- Visual Studio com suporte a desenvolvimento .NET MAUI;
+- .NET 10 SDK;
+- workload do .NET MAUI para Windows.
+
+Clone o repositório:
+
+```bash
+git clone https://github.com/akioShaolin/MauiAppHotel.git
+```
+
+Entre na pasta:
+
+```bash
+cd MauiAppHotel
+```
+
+Abra:
+
+```text
+MauiAppHotel.sln
+```
+
+No Visual Studio, selecione:
+
+```text
+Windows Machine
+```
+
+e execute o projeto.
+
+Caso o Windows impeça a implantação local do aplicativo, pode ser necessário habilitar o **Modo de Desenvolvedor** nas configurações do sistema.
+
+---
+
+## Conceitos trabalhados
+
+Durante esta atividade foram utilizados e revisados conceitos como:
+
+- Programação Orientada a Objetos;
+- classes e objetos;
+- propriedades;
+- `get` e `set`;
+- encapsulamento;
+- listas de objetos com `List<T>`;
+- BindingContext;
+- Data Binding;
+- navegação entre páginas;
+- manipulação de eventos;
+- DatePicker;
+- Picker;
+- Grid;
+- Border;
+- estilos XAML;
+- estados visuais;
+- tratamento de exceções;
+- validação de dados;
+- Git e GitHub.
+
+---
+
+## Projeto original
+
+Este repositório é um **fork** do projeto AppHotel criado por **Tiago Antonio da Silva** e utilizado como material de estudo do curso.
+
+Repositório original:
+
+https://github.com/tiagotas/MauiAppHotel
+
+Código-base utilizado na Agenda 14:
+
+https://github.com/tiagotas/MauiAppHotel/tree/4e655cb68610572865b83fc420655601b1a5f1ff
+
+As alterações apresentadas neste repositório foram realizadas para a atividade da **Agenda 14 de Desenvolvimento de Sistemas II**.
+
+---
+
+## Autor das modificações
+
+**Pedro Akio Sakuma**
+
+GitHub: [@akioShaolin](https://github.com/akioShaolin)
