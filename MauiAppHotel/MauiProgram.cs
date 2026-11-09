@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
-
-namespace MauiAppHotel
+﻿namespace MauiAppHotel
 {
     public static class MauiProgram
     {
@@ -17,10 +15,6 @@ namespace MauiAppHotel
                     fonts.AddFont("Kalam-Light.ttf", "KalamLight");
                     fonts.AddFont("Kalam-Regular.ttf", "Kalam");
                 });
-
-#if DEBUG
-    		builder.Logging.AddDebug();
-#endif
 
             return builder.Build();
         }

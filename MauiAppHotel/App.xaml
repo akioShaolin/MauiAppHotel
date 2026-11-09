@@ -1,22 +1,131 @@
-﻿<?xml version = "1.0" encoding = "UTF-8" ?>
-<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:MauiAppHotel"
-             x:Class="MauiAppHotel.App">
-    
-    <Application.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
-                <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
-            </ResourceDictionary.MergedDictionaries>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 
-            <Style TargetType="Label">
-                <Setter Property="VerticalTextAlignment" Value="Center" />
-                <Setter Property="HorizontalTextAlignment" Value="Center" />
-            </Style>
-            
-        </ResourceDictionary>
+<Application
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MauiAppHotel.App">
+
+    <Application.Resources>
+
+        <!-- Paleta -->
+        <Color x:Key="HotelBackground">#0F172A</Color>
+        <Color x:Key="HotelBackground2">#164E63</Color>
+
+        <Color x:Key="HotelCard">#F8FAFC</Color>
+        <Color x:Key="HotelCardSecondary">#E2E8F0</Color>
+
+        <Color x:Key="HotelPrimary">#0891B2</Color>
+        <Color x:Key="HotelAccent">#22D3EE</Color>
+
+        <Color x:Key="HotelText">#0F172A</Color>
+        <Color x:Key="HotelTextLight">#F8FAFC</Color>
+        <Color x:Key="HotelMuted">#64748B</Color>
+
+        <!-- Título principal -->
+        <Style x:Key="TituloPrincipal" TargetType="Label">
+            <Setter Property="FontFamily" Value="OpenSansSemibold" />
+            <Setter Property="FontSize" Value="34" />
+            <Setter Property="TextColor" Value="{StaticResource HotelTextLight}" />
+            <Setter Property="HorizontalTextAlignment" Value="Center" />
+        </Style>
+
+        <!-- Subtítulos -->
+        <Style x:Key="TituloSecao" TargetType="Label">
+            <Setter Property="FontFamily" Value="OpenSansSemibold" />
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="TextColor" Value="{StaticResource HotelPrimary}" />
+            <Setter Property="HorizontalTextAlignment" Value="Center" />
+        </Style>
+
+        <!-- Texto normal -->
+        <Style x:Key="TextoNormal" TargetType="Label">
+            <Setter Property="FontFamily" Value="OpenSansRegular" />
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="TextColor" Value="{StaticResource HotelText}" />
+        </Style>
+
+        <!-- Valor destacado -->
+        <Style x:Key="ValorDestacado" TargetType="Label">
+            <Setter Property="FontFamily" Value="OpenSansSemibold" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="TextColor" Value="{StaticResource HotelPrimary}" />
+        </Style>
+
+        <!-- Botões -->
+        <Style x:Key="BotaoPrincipal" TargetType="Button">
+            <Setter Property="FontFamily" Value="OpenSansSemibold" />
+            <Setter Property="BackgroundColor" Value="{StaticResource HotelPrimary}" />
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="CornerRadius" Value="12" />
+            <Setter Property="HeightRequest" Value="50" />
+            <Setter Property="FontSize" Value="16" />
+        </Style>
+
+        <Style x:Key="BotaoContador" TargetType="Button">
+            <Setter Property="WidthRequest" Value="42" />
+            <Setter Property="HeightRequest" Value="42" />
+            <Setter Property="CornerRadius" Value="10" />
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontFamily" Value="OpenSansSemibold" />
+            <Setter Property="BackgroundColor" Value="#E2E8F0" />
+            <Setter Property="TextColor" Value="#0F172A" />
+
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+
+                        <VisualState x:Name="Normal">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor" Value="#E2E8F0" />
+                                <Setter Property="TextColor" Value="#0F172A" />
+                                <Setter Property="Scale" Value="1" />
+                            </VisualState.Setters>
+                        </VisualState>
+
+                        <VisualState x:Name="PointerOver">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor" Value="#22D3EE" />
+                                <Setter Property="TextColor" Value="#083344" />
+                                <Setter Property="Scale" Value="1.05" />
+                            </VisualState.Setters>
+                        </VisualState>
+
+                        <VisualState x:Name="Pressed">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor" Value="#0891B2" />
+                                <Setter Property="TextColor" Value="White" />
+                                <Setter Property="Scale" Value="0.95" />
+                            </VisualState.Setters>
+                        </VisualState>
+
+                        <VisualState x:Name="Disabled">
+                            <VisualState.Setters>
+                                <Setter Property="Opacity" Value="0.4" />
+                            </VisualState.Setters>
+                        </VisualState>
+
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+
+        <Style x:Key="PickerHotel" TargetType="Picker">
+            <Setter Property="FontFamily" Value="OpenSansRegular" />
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="TextColor" Value="{StaticResource HotelText}" />
+            <Setter Property="TitleColor" Value="{StaticResource HotelMuted}" />
+        </Style>
+
+        <Style x:Key="DatePickerHotel" TargetType="DatePicker">
+            <Setter Property="FontFamily" Value="OpenSansRegular" />
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="TextColor" Value="{StaticResource HotelText}" />
+            <Setter Property="BackgroundColor" Value="{StaticResource HotelCardSecondary}" />
+            <Setter Property="HeightRequest" Value="48" />
+            <Setter Property="HorizontalOptions" Value="Fill" />
+        </Style>
+
     </Application.Resources>
-    
+
 </Application>

@@ -1,66 +1,201 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MauiAppHotel.Views.HospedagemContratada"
-             NavigationPage.HasNavigationBar="False"
-             BackgroundColor="{StaticResource Gray100}">
 
-    <VerticalStackLayout VerticalOptions="CenterAndExpand">
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MauiAppHotel.Views.HospedagemContratada"
+    NavigationPage.HasNavigationBar="False">
 
-        <Label Text="{Binding QuartoSelecionado.Descricao}"
-               TextColor="{StaticResource Primary}"
-               FontFamily="Kalam"
-               FontSize="50"
-               HorizontalTextAlignment="Center"/>
+    <ContentPage.Background>
 
-        <Frame Margin="10">
-            <StackLayout  Orientation="Horizontal" >
-                <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
-                    <Label Text="Adultos: " />
-                    <Label Text="{Binding QntAdultos}" 
-                           TextColor="{StaticResource Primary}" />
-                </HorizontalStackLayout>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
 
-                <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
-                    <Label Text="Crianças: " />
-                    <Label Text="{Binding QntCriancas}" 
-                           TextColor="{StaticResource Primary}" />
-                </HorizontalStackLayout>
-            </StackLayout>
-        </Frame>
+            <GradientStop
+                Color="{StaticResource HotelBackground}"
+                Offset="0.0" />
 
-        <Frame Margin="10">
-            <Grid ColumnDefinitions="*, *, *"
-                  RowDefinitions="Auto, Auto">
-                <Label Grid.Row="0" Grid.Column="0" Text="Check-in:" />
-                <Label Grid.Row="0" Grid.Column="1" Text="Check-out:" />
-                <Label Grid.Row="0" Grid.Column="2" Text="Estadia:" />
+            <GradientStop
+                Color="{StaticResource HotelBackground2}"
+                Offset="1.0" />
 
-                <Label Grid.Row="1" Grid.Column="0" 
-                       Text="{Binding DataCheckIn, StringFormat='{}{0:dd/MM/yyyy}'}"
-                       TextColor="{StaticResource Primary}" />
+        </LinearGradientBrush>
 
-                <Label Grid.Row="1" Grid.Column="1" 
-                       Text="{Binding DataCheckOut, StringFormat='{}{0:dd/MM/yyyy}'}"
-                       TextColor="{StaticResource Primary}" />
+    </ContentPage.Background>
 
-                <Label Grid.Row="1" Grid.Column="2" 
-                       Text="{Binding Estadia}"
-                       TextColor="{StaticResource Primary}"/>
-            </Grid>
-        </Frame>
+    <ScrollView>
 
-        <Frame Margin="10">
-            <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
-                <Label Text="Valor Total: " />
-                <Label Text="{Binding ValorTotal, StringFormat='{}{0:c}'} "
-                       TextColor="{StaticResource Primary}" />
-            </HorizontalStackLayout>
-        </Frame>
+        <VerticalStackLayout
+            Padding="24"
+            Spacing="18"
+            MaximumWidthRequest="520"
+            HorizontalOptions="Center">
 
-        <Button Text="Voltar"
-                HorizontalOptions="Center"
-                Clicked="Button_Clicked" />
+            <Label
+                Text="Resumo da Reserva"
+                Style="{StaticResource TituloPrincipal}"
+                Margin="0,20,0,0" />
 
-    </VerticalStackLayout>
+            <Label
+                Text="{Binding QuartoSelecionado.Descricao}"
+                FontFamily="OpenSansSemibold"
+                FontSize="24"
+                TextColor="{StaticResource HotelAccent}"
+                HorizontalTextAlignment="Center"
+                Margin="0,0,0,10" />
+
+            <!-- Hóspedes -->
+            <Border
+                BackgroundColor="{StaticResource HotelCard}"
+                Padding="20"
+                StrokeThickness="0">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="18" />
+                </Border.StrokeShape>
+
+                <VerticalStackLayout Spacing="14">
+
+                    <Label
+                        Text="Hóspedes"
+                        Style="{StaticResource TituloSecao}" />
+
+                    <Grid ColumnDefinitions="*,*">
+
+                        <VerticalStackLayout
+                            Grid.Column="0"
+                            HorizontalOptions="Center">
+
+                            <Label
+                                Text="Adultos"
+                                Style="{StaticResource TextoNormal}" />
+
+                            <Label
+                                Text="{Binding QntAdultos}"
+                                Style="{StaticResource ValorDestacado}" />
+
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout
+                            Grid.Column="1"
+                            HorizontalOptions="Center">
+
+                            <Label
+                                Text="Crianças"
+                                Style="{StaticResource TextoNormal}" />
+
+                            <Label
+                                Text="{Binding QntCriancas}"
+                                Style="{StaticResource ValorDestacado}" />
+
+                        </VerticalStackLayout>
+
+                    </Grid>
+
+                </VerticalStackLayout>
+
+            </Border>
+
+            <!-- Datas -->
+            <Border
+                BackgroundColor="{StaticResource HotelCard}"
+                Padding="20"
+                StrokeThickness="0">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="18" />
+                </Border.StrokeShape>
+
+                <VerticalStackLayout Spacing="15">
+
+                    <Label
+                        Text="Período"
+                        Style="{StaticResource TituloSecao}" />
+
+                    <Grid
+                        ColumnDefinitions="*,*,*"
+                        RowDefinitions="Auto,Auto"
+                        RowSpacing="8">
+
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Text="Check-in"
+                            Style="{StaticResource TextoNormal}" />
+
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Text="Check-out"
+                            Style="{StaticResource TextoNormal}" />
+
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="2"
+                            Text="Diárias"
+                            Style="{StaticResource TextoNormal}" />
+
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Text="{Binding DataCheckIn, StringFormat='{}{0:dd/MM/yyyy}'}"
+                            Style="{StaticResource ValorDestacado}" />
+
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Text="{Binding DataCheckOut, StringFormat='{}{0:dd/MM/yyyy}'}"
+                            Style="{StaticResource ValorDestacado}" />
+
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="2"
+                            Text="{Binding Estadia}"
+                            Style="{StaticResource ValorDestacado}" />
+
+                    </Grid>
+
+                </VerticalStackLayout>
+
+            </Border>
+
+            <!-- Total -->
+            <Border
+                BackgroundColor="{StaticResource HotelPrimary}"
+                Padding="22"
+                StrokeThickness="0">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="18" />
+                </Border.StrokeShape>
+
+                <VerticalStackLayout>
+
+                    <Label
+                        Text="Valor total"
+                        FontFamily="OpenSansRegular"
+                        FontSize="15"
+                        TextColor="#CFFAFE"
+                        HorizontalTextAlignment="Center" />
+
+                    <Label
+                        Text="{Binding ValorTotal, StringFormat='{}{0:C}'}"
+                        FontFamily="OpenSansSemibold"
+                        FontSize="30"
+                        TextColor="White"
+                        HorizontalTextAlignment="Center" />
+
+                </VerticalStackLayout>
+
+            </Border>
+
+            <Button
+                Text="Voltar"
+                Clicked="Button_Clicked"
+                Style="{StaticResource BotaoPrincipal}"
+                Margin="0,5,0,25" />
+
+        </VerticalStackLayout>
+
+    </ScrollView>
+
 </ContentPage>

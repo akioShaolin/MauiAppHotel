@@ -17,8 +17,8 @@ public partial class ContratacaoHospedagem : ContentPage
         dtpck_checkin.MinimumDate = DateTime.Now;
         dtpck_checkin.MaximumDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month + 1, DateTime.Now.Day);
 
-        dtpck_checkout.MinimumDate = dtpck_checkin.Date.AddDays(1);
-        dtpck_checkout.MaximumDate = dtpck_checkin.Date.AddMonths(6);
+        dtpck_checkout.MinimumDate = dtpck_checkin.Date.Value.AddDays(1);
+        dtpck_checkout.MaximumDate = dtpck_checkin.Date.Value.AddMonths(6);
     }
 
     private async void Button_Clicked(object sender, EventArgs e)
@@ -28,10 +28,10 @@ public partial class ContratacaoHospedagem : ContentPage
             Hospedagem h = new Hospedagem
             {
                 QuartoSelecionado = (Quarto)pck_quarto.SelectedItem,
-                QntAdultos = Convert.ToInt32(stp_adultos.Value),
-                QntCriancas = Convert.ToInt32(stp_criancas.Value),
-                DataCheckIn = dtpck_checkin.Date,
-                DataCheckOut = dtpck_checkout.Date,
+                QntAdultos = quantidadeAdultos,
+                QntCriancas = quantidadeCriancas,
+                DataCheckIn = dtpck_checkin.Date.Value,
+                DataCheckOut = dtpck_checkout.Date.Value,
             };
 
             await Navigation.PushAsync(new HospedagemContratada()
@@ -50,9 +50,44 @@ public partial class ContratacaoHospedagem : ContentPage
     {
         DatePicker elemento = sender as DatePicker;
 
-        DateTime data_selecionada_checkin = elemento.Date;
+        DateTime data_selecionada_checkin = elemento.Date.Value;
 
         dtpck_checkout.MinimumDate = data_selecionada_checkin.AddDays(1);
         dtpck_checkout.MaximumDate = data_selecionada_checkin.AddMonths(6);
+    }
+
+    private int quantidadeAdultos = 0;
+    private int quantidadeCriancas = 0;
+
+    private void AumentarAdultos_Clicked(object sender, EventArgs e)
+    {
+        if (quantidadeAdultos < 10)
+            quantidadeAdultos++;
+
+        lbl_adultos.Text = quantidadeAdultos.ToString();
+    }
+
+    private void DiminuirAdultos_Clicked(object sender, EventArgs e)
+    {
+        if (quantidadeAdultos > 0)
+            quantidadeAdultos--;
+
+        lbl_adultos.Text = quantidadeAdultos.ToString();
+    }
+
+    private void AumentarCriancas_Clicked(object sender, EventArgs e)
+    {
+        if (quantidadeCriancas < 10)
+            quantidadeCriancas++;
+
+        lbl_criancas.Text = quantidadeCriancas.ToString();
+    }
+
+    private void DiminuirCriancas_Clicked(object sender, EventArgs e)
+    {
+        if (quantidadeCriancas > 0)
+            quantidadeCriancas--;
+
+        lbl_criancas.Text = quantidadeCriancas.ToString();
     }
 }
